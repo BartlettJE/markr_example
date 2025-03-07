@@ -1,0 +1,132 @@
+---
+title: "Feedback for `r class_name` `r assessment_name` `r assessment_year`"  
+output: 
+  html_document:
+    df_print: kable
+---
+
+```{r setup, include = FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,     # don't show code chunks
+  message = FALSE,  # don't show code messages
+  warning = FALSE,  # don't show code warnings
+  out.width = "75%" # show images at 75% page width
+)
+library(markr)
+library(tidyverse)
+```
+
+**Student**: `r student$ID_number` 
+
+**Marker**: Dr James Bartlett.  
+
+**Overall grade**: `r student$Grade`
+
+**Points**: 
+
+  - **Q1** - `r student$Q1_code_1 + student$Q1_choice_2` / 9. 
+  
+  - **Q2** - `r student$Q2_code_1 + student$Q2_report_2` / 9. 
+  
+  - **Q3** - `r student$Q3` / 4. 
+
+# Individual Feedback
+
+In this section, you will see three actionable points specific to your work. They combine feedback from this assessment for what worked well or what you could work on, and provide feed forward advice for future assessments or data analysis tasks. 
+
+- **Actionable point 1**: `r student$FF1`
+
+- **Actionable point 2**: `r student$FF2`
+
+- **Actionable point 3**: `r student$FF3`
+
+# General Feedback {.tabset .tabset-fade .tabset-fade}
+
+In this section, everyone receives the same class-level feedback for common strengths and areas for improvement we recogised across the cohort. We break this down by question and demonstrate some example approaches where relevant. Overall though, this was a really strong year and we saw some great work here. We could really see people understand and apply the content we covered in class or the materials, but we also saw some great independent work like attempting alternative models we did not cover in the materials.    
+
+## <span style = "color:red">Question 1 - Reproducibility </span>
+
+### Part 1: Reproduce their results
+
+Task: Using your knowledge of the key variables in Irving et al. (2022), we want you to apply the analysis techniques you learnt in weeks 1-3 of the course focusing on regression and reproduce the analyses and values they report in the following extracts from page 5 of their article. For full disclosure, if you look at the original article, Irving et al. (2022) used Bayesian statistics which you have not learnt about yet, so we have rewritten their analyses using frequentist statistics where relevant. We have also omitted a handful of analyses rather than expect you to try and reproduce all their results.
+
+#### Strengths
+
+- The most effective answers were very clear in how the approach and results were reproducible or not. We asked for a combination of text, code, and output. There were some great examples of combining inline code to make the results reproducible, but also including a few sentences around that to explain to us whether the results were reproducible or not. 
+
+- There were some really elegant solutions to calculating subscale scores for the sum and mean. I personally like a pivot longer, summarise, and join as I like to see the process and be easier to debug. However, I saw some nice examples here using functions like rowwise and rowSum to calculate these in one line.
+
+#### Areas for improvement
+
+- The whole purpose behind this question was being able to reverse engineer modelling techniques from their descriptions. The simple model in the output used regression with one predictor, but some responses produced a t-test. While it's statistically equivalent, this did not produce the beta value as the output, so make sure there is a clear connection between the output and the model/test you are applying. 
+
+- The flipside to the strength was not commenting on whether the results were reproducible or not, such as how the interaction term is not reproducible from the output. Plenty of responses showed a great process to apply the techniques, but it was the narrative that was missing. Remember we want your narrative, commented code, and relevant output. 
+
+- There were some responses which either hid the code or hid the output. I appreciate the files can look a little messy, but this is exactly what we want and what the instructions asked for. A key element of this course is seeing your process and approach, and it makes providing informative feedback very difficult if we cannot see what you tried doing and if it was accurate. 
+
+### Part 2: Checking assumptions
+
+Task: In the original Irving et al. (2022) article, they follow the common approach of not commenting on their choice of analysis and any relevant assumptions. Justify whether you consider using simple and multiple linear regression on this outcome an appropriate choices of analysis technique. You can report any kind of assumption checks or alternative analysis you consider relevant.
+
+#### Strengths
+
+- Like the modelling techniques themselves, communication was key here. There were lots of examples where there was a nice clear narrative to explain to the reader what different diagnostic plots showed and how this influenced what you considered the best choice of analysis. 
+
+- This also combined with evaluation as justifying your choice of analysis given the assumptions is a key decision point. It is often a grey area and it is your responsibility to explain what you consider the best choice of analysis given sources you cite. There were some excellent approaches here where people would highlight a potential problem but justify its robustness or an alternative model with supprting evidence. 
+
+- If you did think there was a problem, there were some great approaches to provide a practical solution to that problem. You could have presented alternative analyses that addressed the problem you identified, such as applying robust standard errors or addressing the discrete/count outcome with something like Poisson regression. 
+
+#### Areas for improvement
+
+- If you do recognise potential problems with the assumption checks, then make sure you provide a practical solution or defense. There were a few examples where people would carefully check assumptions and highlight problems, but provide no conclusion on what you should do given that problem. It is a grey area, so I was not expecting one specific approach, I was more interested in your ability to defend the option you considered the best choice. 
+
+- Relating to this, if you are arguing OLS regression is robust, make sure you can support your position with evidence. This is another area for evaluation and being able to defend your choice. 
+
+- There were some fantastic examples of the AI declaration, so thank you to everyone who completed it reflectively and honestly. They are tools that are becoming more and more common, so our approach is helping people still learn effectively and recognising and avoiding the limitations in generative AI tools. For this section, there were a few examples where people said they checked AI tools to help decide or identify problems with the assumptions. This is absolutely fine for helping you understand but for evaluation, it is not enough on it's own as the results of these tools are essentially unverifiable. Make sure you still bring in peer-reviewed evidence to support and defend your approach. 
+
+## <span style = "color:red">Question 2 - Replicability </span>
+
+### Part 1: Data analysis 
+
+Task: Using the replication data `Zhang_2023.csv`, apply the same analysis techniques that you recreated in question 1 part 1 (the effect of correction condition on mistaken causal inferences, and the moderating effect of trust in science and scientists). Demonstrate your approach and provide commented code, this time checking assumptions as part of the analysis process. 
+
+#### Part 1 overview
+
+The approach was - intentionally - almost identical to question 1, so all the strengths and weaknesses there also apply to this task. As we asked for assumption checks during the process this time, there were some really nice examples of weaving your narrative, code, and output to work through the process. In a published paper, you will only see the final product and you miss the process, so these are the skills we are trying to develop in you. It is the connection between the research question, design, and analysis. We are also supporting you in being able to complete all this in a reproducible way. 
+
+### Part 2: Write-up 
+
+Task: Now you have presented your commented code and relevant output, we would like you to report the results of your analysis in one or two paragraphs like you were writing the results section of a report (similar to the quoted approach of Irving et al. in question 1 part 1), with APA-style formatted statistics and any relevant data visualisation.
+
+#### Strengths
+
+- I love the Irving et al. paper, but it drives me crazy how there are no plots in the paper. There were a great range of plots to visualise the data for the simple model and then creating interaction plots to help communicate the interaction in the multiple regression model. Try and aim for one plot per key analysis as it can really help communicate your findings.  
+
+#### Areas for improvement
+
+- The wording here was writing up your findings like a results section. Part 1 was to see the full process and part 2 was seeing how you could take that and present it in a more accessible way. Some assessments did not include any of the plots here, so think about where they would be placed in a results section. 
+
+- A few people asked me if it could be in the same format as the Irving et al. extract from question 1 and I said yes as there is only so many ways you can word the same variables and analysis. However, it did not need to be exactly the same, particularly when there were differences and notable results compared to Irving et al. For example, the main effect of TSS was often statistically significant, but many results sections did not mention it at all, presumably because Irving et al. did not report it. You can use published papers as inspiration, but keep in mind you still need to decide what results you report. 
+
+## <span style = "color:red">Question 3 - Replication success </span>
+
+Task: With reference to criteria for replication success (e.g., this paper on replications in cancer biology by [Errington et al., 2021](https://doi.org/10.7554/eLife.71601){target="_blank"} or a guide on evaluating replications by [LeBel et al., 2019)](https://open.lnu.se/index.php/metapsychology/article/view/843){target="_blank"}, write one paragraph explaining whether you consider the results of Bartlett and Zhang to have replicated the original study from Irving et al. (2022).
+
+### Strengths
+
+- Many of you took the hint to use one or two of the references I provided to use their criteria to support the answer here. That is related to evaluation skills in being able to support your position with evidence, so bring in supporting evidence wherever possible in future assessments. For a concept like replication success, there are different criteria out there and some of the descriptions can be a little vague, such as similar or different results. These criteria try to address that by formalising replication success criteria, like whether the replication effect size was in the 95% CI of the original study. 
+
+- The best answers here were very specific in terms of comparing statistics and demonstrating good communication skills to present to the reader the information side by side. 
+
+### Areas for improvement
+
+- Opposite to the strengths, some responses did not use any supporting citations here. Questioning whether a study replicated or not is an academic argument with different layers, so its important you bring in evidence to support your position instead of just describing. 
+
+- I left quite a few comments where some answers started really well to comment clearly on replication success for the single predictor, but once it got to the interaction model, these estimates became vaguer. Try to consistently apply evaluation skills like the replication success criteria to all the key results. 
+
+- Some answers made it difficult to compare which statistics you were referring to, which means if you cannot remember, you need to scroll up and double check. For communication, keep your reader in mind for what would make it as easy as possible to understand. The easier you make it for your reader, the better. 
+
+- The reason I pointed you to the replication criteria was to get involved in a more nuanced argument than significant vs non-significant. It is one component, whereas interpreting effect sizes is the more nuanced evaluation. Some people only mentioned *p*-values, so try and dig deeper into the results and question the consistency of the effect size estimates in relation to the uncertainty around those estimates. 
+
+- Some responses commented more on generalisability or the studies themselves instead of just whether the results replicated. This was absolutely fine in addition and it is a core component of replication success, but some answers focused on these points at the expense of the statistics which is what the question asked about. You did not really have complete details of the method, so we were not expecting you to comment on the quality of the studies.
+
