@@ -24,7 +24,8 @@ make_feedback(
   template = "feedback/template.Rmd", 
   # What path / file name do you want to give each feedback file? 
   # round brackets are variables from the marks spreadsheet, so adding the submission ID here to the file name
-  filename = "feedback/fb/PSYCH5020_Assessment01_[Participant_No].html",
+  # This format will create a series of folders for each student which works with uploading feedback to Moodle
+  filename = "feedback/fb/Participant_[Participant_No]_assignsubmission_file_/PSYCH5020_Assessment01_[Participant_No].html",
   class_name = "PSYCH5020", # variable for the feedback template title
   assessment_name = "Assessment 1", # variable for the feedback template title
   assessment_year = "2025" # variable for the feedback template title
